@@ -1,20 +1,33 @@
 const buttons = document.querySelectorAll("button");
 
+array = [];
 
-function add(a, b) {
-    return a + b;
+function input(n) {
+    return array.push(n);
 }
 
-function subtract(a, b) {
-    return a - b;
+function backspace(array) {
+   return array.pop();
 }
 
-function multiply(a, b) {
-    return a * b;
+function reset() {
+    return array = [];
 }
 
-function divide(a, b) {
-    return a/b;
+function add() {
+    return array.push("+");
+}
+
+function subtract() {
+    return array.push("-");
+}
+
+function multiply() {
+    return array.push("*");
+}
+
+function divide() {
+    return array.push("/");
 }
 
 
