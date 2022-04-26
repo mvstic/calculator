@@ -1,0 +1,27 @@
+body {
+    display:flex;
+    justify-content:center;
+    align-content:center;
+}
+
+.calculator-container {
+    display:flex;
+    justify-content:center;
+    align-content:center;
+    flex-direction:column;
+    border-style:solid;
+    max-width: 250px;
+    max-height: 500px;
+    background-color:grey;
+}
+
+.calculator-buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+input {
+    text-align:right;
+}
+
+
