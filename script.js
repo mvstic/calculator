@@ -14,11 +14,48 @@ let array = [];
 let round = 1;
 let result = 0;
 
-let firstNum;
-let secondNum;
+let input;
+let b;
+let operator;
+let regex = /[+\-*/]/;
 
-function getInput() { 
-    return array.push(display.value);
+function intoArray(input) {
+    array.push(input);
+    input = 0;
+}
+
+function intoArrayAndSolve(input) {
+    array.push(input);
+    solve(array);
+}
+
+function onOperatorPress(input) {
+    input = display.value;
+    if (array.length === 0) {
+        intoArray(input)
+    } 
+    if (array.length === 1 && input.match(regex)) {
+        intoArray(input);
+    }
+    if (array.length === 2) {
+        intoArrayAndSolve(input);
+    }
+}
+
+function solve(array) {
+    a = parseInt(array[0]);
+    b = parseInt(array[2]);
+    operator = (array[1]);
+    switch(operator) {
+        case "+": return add(a, b)
+        case "-": return subtract(a, b)
+        case "*": return multiply(a, b)
+        case "/": return divide(a, b)
+    }
+}
+
+function clearArray() {
+    return array = [];
 }
 
 function add(a, b) {
@@ -49,23 +86,14 @@ function divide(a, b) {
     }
 }
 
-function solve(array) {
-    a = parseInt(array[0]);
-    b = parseInt(array[2]);
-    operator = (array[1]);
-    switch(operator) {
-        case "+": return add(a, b)
-        case "-": return subtract(a, b)
-        case "*": return multiply(a, b)
-        case "/": return divide(a, b)
-    }
-}
+numericalBtns.forEach(button => {
+    button.addEventListener('click', (e) => {
+        console.log(e.target.value);
+        display.value += e.target.value;
+    })
+})
 
-function clearArray() {
-    return array = [];
-}
-
-btns.forEach(button => {
+operatorBtns.forEach(button => {
     button.addEventListener('click', (e) => {
         console.log(e.target.value);
         display.value += e.target.value;
