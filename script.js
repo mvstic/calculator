@@ -68,7 +68,7 @@ function clearArray() {
 btns.forEach(button => {
     button.addEventListener('click', (e) => {
         console.log(e.target.value);
-        display.value = e.target.value;
+        display.value += e.target.value;
     })
 })
 
