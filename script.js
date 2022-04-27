@@ -26,18 +26,17 @@ function intoArray(input) {
 
 function intoArrayAndSolve(input) {
     array.push(input);
-    solve(array);
+    result = solve(array);
+    console.log(result);
 }
 
 function onOperatorPress(input) {
     input = display.value;
     if (array.length === 0) {
         intoArray(input)
-    } 
-    if (array.length === 1 && input.match(regex)) {
+    } else if (array.length === 1 && input.match(regex)) {
         intoArray(input);
-    }
-    if (array.length === 2) {
+    } else {
         intoArrayAndSolve(input);
     }
 }
