@@ -9,8 +9,10 @@
 </head>
 <body>
     <div class="calculator-container">
-        <input type="text" class="calculator-input" value="0" placeholder="0">
+        <div id="history"></div>
+        <input type="text" id="display" placeholder="0">
         <div class="calculator-buttons">
+            <button id="clear">C</button>
             <button value="7" class="numeral">7</button>
             <button value="8" class="numeral">8</button>
             <button value="9" class="numeral">9</button>
@@ -26,7 +28,7 @@
             <button value="0" class="numeral">0</button>
             <button value="." class="decimal">.</button>
             <button value="+" class="operator">+</button>
-            <button value="==" class="operator">=</button>
+            <button value="=" class="equals">=</button>
         </div>
     </div>
 <script src="script.js"></script>

@@ -1,33 +1,63 @@
 const buttons = document.querySelectorAll("button");
+const operators = document.querySelectorAll(".operator");
+const display = document.querySelector("#display");
+const displayHistory = document.querySelector("#history");
+const operatorBtns = Array.from(document.querySelectorAll(".operator"));
+const numericalBtns = Array.from(document.querySelectorAll(".numeral"));
+const equalBtn = document.querySelector(".equals");
+const clearBtn = document.querySelector("#clear");
 
-array = [];
+let array = [];
 
-function input(n) {
-    return array.push(n);
+let round = 1;
+let result = 0;
+
+let firstNum;
+let secondNum;
+
+function getInput() { 
+    return array.push(display.value);
 }
 
-function backspace(array) {
-   return array.pop();
+function add(a, b) {
+    result = a + b;
+    display.value = result;
+    return result;
 }
 
-function reset() {
+function subtract(a, b) {
+    result = a - b;
+    display.value = result;
+    return result;
+}
+
+function multiply(a, b) {
+    result = a * b;
+    display.value = result;
+    return result;
+}
+
+function divide(a, b) {
+    if (a === 0) {
+        return null;
+    } else {
+        result = a / b;
+        display.value = result;
+        return result;
+    }
+}
+
+function solve(a, operator, b) {
+    switch(operator) {
+        case " + ": return add(a, b)
+        case " - ": return subtract(a, b)
+        case " * ": return multiply(a, b)
+        case " / ": return divide(a, b)
+    }
+}
+
+function clearArray() {
     return array = [];
-}
-
-function add() {
-    return array.push("+");
-}
-
-function subtract() {
-    return array.push("-");
-}
-
-function multiply() {
-    return array.push("*");
-}
-
-function divide() {
-    return array.push("/");
 }
 
 
