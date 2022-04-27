@@ -15,7 +15,6 @@ let round = 1;
 let result = 0;
 
 let input;
-let b;
 let operator;
 let regex = /[+\-*/]/;
 
@@ -27,6 +26,8 @@ function intoArray(input) {
 function intoArrayAndSolve(input) {
     array.push(input);
     result = solve(array);
+    clearArray();
+    array.push(result);
     console.log(result);
 }
 
