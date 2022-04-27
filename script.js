@@ -47,12 +47,15 @@ function divide(a, b) {
     }
 }
 
-function solve(a, operator, b) {
+function solve(array) {
+    a = parseInt(array[0]);
+    b = parseInt(array[2]);
+    operator = (array[1]);
     switch(operator) {
-        case " + ": return add(a, b)
-        case " - ": return subtract(a, b)
-        case " * ": return multiply(a, b)
-        case " / ": return divide(a, b)
+        case "+": return add(a, b)
+        case "-": return subtract(a, b)
+        case "*": return multiply(a, b)
+        case "/": return divide(a, b)
     }
 }
 
