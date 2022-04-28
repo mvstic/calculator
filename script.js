@@ -31,17 +31,20 @@ function intoArrayAndSolve(input) {
     console.log(result);
 }
 
-function onOperatorPress(input) {
+function onOperatorPress(operator) {
     input = display.value;
     if (array.length === 0) {
         intoArray(input)
+        intoArray(operator)
         clearDisplay();
-    } else if (array.length === 1 && input.match(regex)) {
-        intoArray(input);
+    } else if (array.length === 1) {
+        intoArray(operator);
         clearDisplay();
-    } else {
+    } else if (array.length === 2) {
         intoArrayAndSolve(input);
         clearDisplay();
+    } else {
+        input = "NULL"
     }
 }
 
@@ -102,8 +105,7 @@ numericalBtns.forEach(button => {
 
 operatorBtns.forEach(button => {
     button.addEventListener('click', (e) => {
-        console.log(e.target.value);
-        display.value += e.target.value;
+        onOperatorPress(e.target.value);
     })
 });
 
@@ -112,7 +114,4 @@ decimalBtn.addEventListener('click', (e) => {
     display.value += e.target.value;
 });
 
-equalBtn.addEventListener('click', onOperatorPress)
-
-
-
+equalBtn.addEventListener('click', onOperatorPress);
