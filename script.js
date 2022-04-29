@@ -1,26 +1,27 @@
 const buttons = document.querySelectorAll("button");
 const operators = document.querySelectorAll(".operator");
 const display = document.querySelector("#display");
-const history = document.querySelector("#history");
 const operatorBtns = document.querySelectorAll(".operator");
 const numericalBtns = document.querySelectorAll(".numeral");
 const decimalBtn = document.querySelector(".decimal");
 const equalBtn = document.querySelector(".equals");
-
-const btns = document.querySelectorAll(".calculator-buttons");
 const clearBtn = document.querySelector("#clear");
+const clearAllBtn = document.querySelector("#clear-all");
+const backspaceBtn = document.querySelector("#backspace");
+const btns = document.querySelectorAll(".calculator-buttons");
 
 let array = [];
 
 let result = 0;
 
 let input;
-let operator;
+let operator = operatorBtns.value;
 let regex = /[+\-*/]/;
 
 function intoArray(input) {
     array.push(input);
     input = 0;
+    clearDisplay();
 }
 
 function intoArrayAndSolve(input) {
@@ -28,23 +29,19 @@ function intoArrayAndSolve(input) {
     result = solve(array);
     clearArray();
     array.push(result);
-    console.log(result);
+    display.value = result;
 }
 
-function onOperatorPress(operator) {
+function onOperatorPress(operator, input) {
     input = display.value;
     if (array.length === 0) {
-        intoArray(input)
-        intoArray(operator)
-        clearDisplay();
-    } else if (array.length === 1) {
+        intoArray(input);
         intoArray(operator);
-        clearDisplay();
-    } else if (array.length === 2) {
+    } else if (array.length === 1 && typeof array[0] === "number") {
+        intoArray(operator);
+    } else if (array.length >= 2 || typeof array[0] === "number") {
         intoArrayAndSolve(input);
-        clearDisplay();
-    } else {
-        input = "NULL"
+        intoArray(operator);
     }
 }
 
@@ -70,19 +67,16 @@ function clearDisplay() {
 
 function add(a, b) {
     result = a + b;
-    display.value = result;
     return result;
 }
 
 function subtract(a, b) {
     result = a - b;
-    display.value = result;
     return result;
 }
 
 function multiply(a, b) {
     result = a * b;
-    display.value = result;
     return result;
 }
 
@@ -91,15 +85,19 @@ function divide(a, b) {
         return null;
     } else {
         result = a / b;
-        display.value = result;
         return result;
     }
 }
 
 numericalBtns.forEach(button => {
     button.addEventListener('click', (e) => {
-        console.log(e.target.value);
-        display.value += e.target.value;
+        if (array.length === 1 && typeof array[0] === "number") {
+            display.value += e.target.value;
+            onOperatorPress();
+        } else {
+            console.log(e.target.value);
+            display.value += e.target.value;
+        }
     })
 });
 
@@ -114,4 +112,18 @@ decimalBtn.addEventListener('click', (e) => {
     display.value += e.target.value;
 });
 
-equalBtn.addEventListener('click', onOperatorPress);
+equalBtn.addEventListener('click', () => {
+    if (array.length === 1 && typeof array[0] === "number") {
+        onOperatorPress();
+    } else if (array.length === 2) {
+        onOperatorPress()
+        array.pop(); //removes "undefined"
+    } else
+        result = array[0];
+        display.value = result;
+});
+
+clearAllBtn.addEventListener('click', clearArray);
+clearBtn.addEventListener('click', clearDisplay);
+// backspaceBtn.addEventListener('click', backspace); 
+// (can this button just be assigned to the delete key?)
