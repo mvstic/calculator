@@ -93,6 +93,17 @@ function divide(a, b) {
     }
 }
 
+function equals() {
+    if (array.length === 1 && typeof array[0] === "number") {
+        onOperatorPress();
+    } else if (array.length === 2) {
+        onOperatorPress()
+        array.pop(); //removes "undefined"
+    } else
+        result = array[0];
+        display.value = result;
+}
+
 function reverseInteger(a) {
     a = display.value;
     parseFloat(a);
@@ -133,17 +144,7 @@ decimalBtn.addEventListener('click', (e) => {
     }
 });
 
-equalBtn.addEventListener('click', () => {
-    if (array.length === 1 && typeof array[0] === "number") {
-        onOperatorPress();
-    } else if (array.length === 2) {
-        onOperatorPress()
-        array.pop(); //removes "undefined"
-    } else
-        result = array[0];
-        display.value = result;
-});
-
+equalBtn.addEventListener('click', equals)
 plusminusBtn.addEventListener('click', reverseInteger);
 backspaceBtn.addEventListener('click', backspace);
 clearAllBtn.addEventListener('click', clearArray);
