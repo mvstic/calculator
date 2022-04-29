@@ -48,8 +48,8 @@ function onOperatorPress(operator, input) {
 }
 
 function solve(array) {
-    a = parseInt(array[0]);
-    b = parseInt(array[2]);
+    a = parseFloat(array[0]);
+    b = parseFloat(array[2]);
     operator = (array[1]);
     switch(operator) {
         case "+": return add(a, b)
@@ -93,7 +93,7 @@ function divide(a, b) {
 
 function reverseInteger(a) {
     a = display.value;
-    parseInt(a);
+    parseFloat(a);
     return display.value = -1 * a;
 }
 
@@ -103,12 +103,14 @@ numericalBtns.forEach(button => {
             clearDisplay();
             display.value += e.target.value;
             onOperatorPress();
-        } else {
+        } else if (display.value.includes(".")) {
+            console.log(e.target.value);
+            return display.value += e.target.value;
+        } else 
             console.log(e.target.value);
             clearDisplay();
             display.value += e.target.value;
-        }
-    })
+    });
 });
 
 operatorBtns.forEach(button => {
