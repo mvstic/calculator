@@ -35,7 +35,8 @@ function intoArrayAndSolve(input) {
 
 function onOperatorPress(operator, input) {
     input = display.value;
-    if (array.length === 0) {
+    decimalBtn.disabled = false;
+        if (array.length === 0) {
         intoArray(input);
         intoArray(operator);
     } else if (array.length === 1 && typeof array[0] === "number") {
@@ -127,6 +128,9 @@ operatorBtns.forEach(button => {
 decimalBtn.addEventListener('click', (e) => {
     console.log(e.target.value);
     display.value += e.target.value;
+    if (display.value.includes(".")) {
+        decimalBtn.disabled = true;
+    }
 });
 
 equalBtn.addEventListener('click', () => {
