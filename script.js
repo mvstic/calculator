@@ -60,6 +60,7 @@ function solve(array) {
 }
 
 function clearArray() {
+    display.value = '';
     return array = [];
 }
 
@@ -97,6 +98,11 @@ function reverseInteger(a) {
     return display.value = -1 * a;
 }
 
+function backspace(a) {
+    a = display.value;
+    return display.value = a.slice(0, - 1);
+}
+
 numericalBtns.forEach(button => {
     button.addEventListener('click', (e) => {
         if (array.length === 1 && typeof array[0] === "number") {
@@ -108,7 +114,6 @@ numericalBtns.forEach(button => {
             return display.value += e.target.value;
         } else 
             console.log(e.target.value);
-            clearDisplay();
             display.value += e.target.value;
     });
 });
@@ -136,6 +141,7 @@ equalBtn.addEventListener('click', () => {
 });
 
 plusminusBtn.addEventListener('click', reverseInteger);
+backspaceBtn.addEventListener('click', backspace);
 clearAllBtn.addEventListener('click', clearArray);
 clearBtn.addEventListener('click', clearDisplay);
 // backspaceBtn.addEventListener('click', backspace); 
