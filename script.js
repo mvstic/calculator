@@ -5,6 +5,7 @@ const operatorBtns = document.querySelectorAll(".operator");
 const numericalBtns = document.querySelectorAll(".numeral");
 const decimalBtn = document.querySelector(".decimal");
 const equalBtn = document.querySelector(".equals");
+const equalminusBtn = document.querySelector("#plusminus");
 const clearBtn = document.querySelector("#clear");
 const clearAllBtn = document.querySelector("#clear-all");
 const backspaceBtn = document.querySelector("#backspace");
