@@ -149,5 +149,3 @@ plusminusBtn.addEventListener('click', reverseInteger);
 backspaceBtn.addEventListener('click', backspace);
 clearAllBtn.addEventListener('click', clearArray);
 clearBtn.addEventListener('click', clearDisplay);
-// backspaceBtn.addEventListener('click', backspace); 
-// (can this button just be assigned to the delete key?)
