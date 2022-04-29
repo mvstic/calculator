@@ -3,10 +3,10 @@ const operatorBtns = document.querySelectorAll(".operator");
 const numericalBtns = document.querySelectorAll(".numeral");
 const decimalBtn = document.querySelector(".decimal");
 const equalBtn = document.querySelector(".equals");
-const plusminusBtn = document.querySelector("#plusminus");
-const clearBtn = document.querySelector("#clear");
-const clearAllBtn = document.querySelector("#clear-all");
-const backspaceBtn = document.querySelector("#backspace");
+const plusminusBtn = document.querySelector(".plusminus");
+const clearBtn = document.querySelector(".clear");
+const clearAllBtn = document.querySelector(".clear-all");
+const backspaceBtn = document.querySelector(".backspace");
 
 let array = [];
 
