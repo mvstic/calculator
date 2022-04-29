@@ -1,5 +1,3 @@
-const buttons = document.querySelectorAll("button");
-const operators = document.querySelectorAll(".operator");
 const display = document.querySelector("#display");
 const operatorBtns = document.querySelectorAll(".operator");
 const numericalBtns = document.querySelectorAll(".numeral");
@@ -9,7 +7,6 @@ const plusminusBtn = document.querySelector("#plusminus");
 const clearBtn = document.querySelector("#clear");
 const clearAllBtn = document.querySelector("#clear-all");
 const backspaceBtn = document.querySelector("#backspace");
-const btns = document.querySelectorAll(".calculator-buttons");
 
 let array = [];
 
@@ -69,6 +66,11 @@ function clearDisplay() {
     return display.value = '';
 }
 
+function backspace(a) {
+    a = display.value;
+    return display.value = a.slice(0, - 1);
+}
+
 function add(a, b) {
     result = a + b;
     return result;
@@ -110,20 +112,12 @@ function reverseInteger(a) {
     return display.value = -1 * a;
 }
 
-function backspace(a) {
-    a = display.value;
-    return display.value = a.slice(0, - 1);
-}
-
 numericalBtns.forEach(button => {
     button.addEventListener('click', (e) => {
         if (array.length === 1 && typeof array[0] === "number") {
             clearDisplay();
             display.value += e.target.value;
             onOperatorPress();
-        } else if (display.value.includes(".")) {
-            console.log(e.target.value);
-            return display.value += e.target.value;
         } else 
             console.log(e.target.value);
             display.value += e.target.value;
