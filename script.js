@@ -29,7 +29,7 @@ function intoArrayAndSolve(input) {
     result = solve(array);
     clearArray();
     array.push(result);
-    display.value = result;
+    display.value += result;
 }
 
 function onOperatorPress(operator, input) {
@@ -42,6 +42,7 @@ function onOperatorPress(operator, input) {
     } else if (array.length >= 2 || typeof array[0] === "number") {
         intoArrayAndSolve(input);
         intoArray(operator);
+        display.value = array[0];
     }
 }
 
@@ -92,10 +93,12 @@ function divide(a, b) {
 numericalBtns.forEach(button => {
     button.addEventListener('click', (e) => {
         if (array.length === 1 && typeof array[0] === "number") {
+            clearDisplay();
             display.value += e.target.value;
             onOperatorPress();
         } else {
             console.log(e.target.value);
+            clearDisplay();
             display.value += e.target.value;
         }
     })
