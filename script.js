@@ -5,7 +5,7 @@ const operatorBtns = document.querySelectorAll(".operator");
 const numericalBtns = document.querySelectorAll(".numeral");
 const decimalBtn = document.querySelector(".decimal");
 const equalBtn = document.querySelector(".equals");
-const equalminusBtn = document.querySelector("#plusminus");
+const plusminusBtn = document.querySelector("#plusminus");
 const clearBtn = document.querySelector("#clear");
 const clearAllBtn = document.querySelector("#clear-all");
 const backspaceBtn = document.querySelector("#backspace");
@@ -91,6 +91,12 @@ function divide(a, b) {
     }
 }
 
+function reverseInteger(a) {
+    a = display.value;
+    parseInt(a);
+    return display.value = -1 * a;
+}
+
 numericalBtns.forEach(button => {
     button.addEventListener('click', (e) => {
         if (array.length === 1 && typeof array[0] === "number") {
@@ -127,6 +133,7 @@ equalBtn.addEventListener('click', () => {
         display.value = result;
 });
 
+plusminusBtn.addEventListener('click', reverseInteger);
 clearAllBtn.addEventListener('click', clearArray);
 clearBtn.addEventListener('click', clearDisplay);
 // backspaceBtn.addEventListener('click', backspace); 
